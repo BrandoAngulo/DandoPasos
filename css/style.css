@@ -1,3 +1,11 @@
+/**seudoselectores**/
+:root{
+    --blanco: #ffffff;
+    --negro: #212121;
+    --primario: #ffc107;
+    --secundario: #0097A7;
+    --gris: #757575;
+}
 html{
     font-size: 62.5%;
 }
@@ -5,12 +13,21 @@ html{
 body{
     font-size: 16px; /** 1rem = 10px **/
 }
-/**La unidad de medida rem hace que se adapte a diferentes tipos de tamaños de pantallas**/
-h1{
+.titulo{
     text-align: center;
-    font-size: 3.8rem; /**38px**/
+    font-size: 3.8rem;
+}
+/**La unidad de medida rem hace que se adapte a diferentes tipos de tamaños de pantallas**/
+h1.titulo span{
+    text-align: center;
+    font-size: 2rem; /**38px**/
+    /* se llama a la variable var(el color creado) de la paleta de colores q se creo en root 
+    color: var(--negro); */
 }
 
-span{
+/*especificidad en css primeoro se crea la clase titulo y para decidir a a que etiqueta especifica darle el css debe de poner la clase despues la etiqueta
+
+.titulo span{
     font-size: 2rem;
-}
+    color: blue;
+} */
