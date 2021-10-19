@@ -1,30 +1,43 @@
 /**seudoselectores**/
-:root{
-    --blanco: #ffffff;
-    --negro: #212121;
-    --primario: #ffc107;
-    --secundario: #0097A7;
-    --gris: #757575;
+:root {
+  --blanco: #ffffff;
+  --negro: #212121;
+  --primario: #ffc107;
+  --secundario: #0097a7;
+  --gris: #757575;
 }
-html{
-    font-size: 62.5%;
-    /*fuente de letra crub*/
-    font-family: 'Krub', sans-serif;
+html {
+  font-size: 62.5%;
+  /*fuente de letra crub*/
+  font-family: "Krub", sans-serif;
+  /*usarlo siempre no hace que afecte el padding en la caja osea que se ponga mas grande si ya se ah definido un tamaño */
+  box-sizing: border-box;
+}
+/* complemento de box-sizing: border-box para aplicarlo a todo */
+*,*:before,*:after{
+box-sizing: inherit;
 }
 
-body{
-    font-size: 16px; /** 1rem = 10px **/
+body {
+  font-size: 16px; /** 1rem = 10px **/
 }
-.titulo{
-    text-align: center;
-    font-size: 3.8rem;
+/*tanto el h1,h2,h3 se esta definiendo una regla para la tipografia en general*/
+h1 {
+    font-size: 3.8rem;/*3.8rem == 38px*/
+}
+h2{
+    font-size: 2.8rem; /*2.8 == 28px*/
+}
+h3{
+    font-size: 1.8rem; /*1.8rem == 18px*/
+}
+/*se va a utilizar ese heding para todos para ahorrar codigo y no ponerlos uno por uno si va hacer lo mismo*/
+h1,h2,h3 {
+  text-align: center;
 }
 /**La unidad de medida rem hace que se adapte a diferentes tipos de tamaños de pantallas**/
-h1.titulo span{
-    text-align: center;
-    font-size: 2rem; /**38px**/
-    /* se llama a la variable var(el color creado) de la paleta de colores q se creo en root 
-    color: var(--negro); */
+.titulo span {
+  text-align: center;
 }
 
 /*especificidad en css primeoro se crea la clase titulo y para decidir a a que etiqueta especifica darle el css debe de poner la clase despues la etiqueta
@@ -33,47 +46,85 @@ h1.titulo span{
     font-size: 2rem;
     color: blue;
 } */
-.nav-bg{
-    background-color: var(--secundario);
+.nav-bg {
+  background-color: var(--secundario);
 }
-    .navegacion-principal{
-    /* flexbox seria activandolo con display:flex activa siertas propiedades para acomodar el contenido */
-    display: flex;
+.navegacion-principal {
+  /* flexbox seria activandolo con display:flex activa siertas propiedades para acomodar el contenido */
+  display: flex;
+  flex-direction: column;
+  /* si no esta activado flexbox = display:flex la propiedad justify-content: no se activara 
+  justify-content: space-between; se paso para el media query como buena practica ya que el mediaquery exriende de la clase navegacion princilal*/
+}
+@media (min-width: 768px) {
+  .navegacion-principal {
+    flex-direction: row;
     /* si no esta activado flexbox = display:flex la propiedad justify-content: no se activara */
     justify-content: space-between;
+  }
 }
 
 /* todo lo que tenga que ver con texto se va encontrar con font o con text las propiedades ejemplo text-decoration o font-size etc */
-.navegacion-principal a{
-    color: var(--blanco);
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 2rem;
-    padding: 1rem; /* css piensa que si todas las direcciones van a ser iguales no hay necesidad de replicarlo, solo con escribirlo una ves ya css lo automatiza i gual pasa con el margin */
+.navegacion-principal a {
+    display: block;
+    text-align: center;
+  color: var(--blanco);
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 2rem;
+  padding: 1rem; /* css piensa que si todas las direcciones van a ser iguales no hay necesidad de replicarlo, solo con escribirlo una ves ya css lo automatiza i gual pasa con el margin */
 }
 
 /*el hover se le puede dar propiedades a la fuente ya que es solo cuando se le pasa el cursor por encima poniendole el color al hover de la etiqueta a */
-.navegacion-principal a:hover{
-    background-color: var(--primario);
-    color: var(--negro);
+.navegacion-principal a:hover {
+  background-color: var(--primario);
+  color: var(--negro);
 }
-.contenedor{
-    width: 120rem;
-    /* margin-top: 0;  margen hacia arriba cero 
+.contenedor {
+    /* toma 1200 pixeles como maximo si no toma el 100% para el ancho de las pantallas con max-width */
+  max-width: 120rem;
+  /* margin-top: 0;  margen hacia arriba cero 
     margin-right: auto;  margen a la derecha auto para que el margin auto funcione el otro lado tambien debe estar auto para que se centre 
     margin-bottom: 0;  margen hacia abajo cero 
     margin-left: auto;   margen a la izquierda auto para que el margin auto funcione el otro lado tambien debe estar auto para que se centre */
 
-    /* para no escribir tanto codigo por que este es lo mismo de arriba entonces se escribe margin y las demas propiedades automaticamente margin las coge como las manecillas del reloj */
-    margin: 0 auto 0 auto;
+  /* para no escribir tanto codigo por que este es lo mismo de arriba entonces se escribe margin y las demas propiedades automaticamente margin las coge como las manecillas del reloj */
+  margin: 0 auto 0 auto;
 }
-@media (min-width: 480px){
-    h1{
-
-    }
+.hero{
+    background-image: url(../img/hero.jpg);
+    background-repeat: no-repeat;
+    /* si la imagen no abarca el 100% de la pantalla coge una parte y la completa background-size: cover;*/
+    background-size: cover;
+    height: 41rem;
+    /* padding: 2rem; */
+    /*el padre siempre debe tener posicion relativa para que el hijo se pueda posicionar como absulubta*/
+    position: relative;
 }
-@media (min-width: 768px){
-    h1{
-        
-    }
+.contenido-hero{
+    /*solo se le puede aplicar position: absolute; por que el padre tiene position: relative; si esto no se hace no se podria hacer nada de las posiciones como top, right, bottom, y left */
+position: absolute;
+/*ver la imagen con nivel de con una sombra con nivel de transparencia para hacerlo hay q usar un nivel del 0 hasta el 1 donde el uno es totalmente negro y el cero es totalmente transparente*/
+background-color: rgba(0, 0, 0, .7);/*sintaxis anterior*/
+background-color: rgba(0 0 0 /70%);/*sintaxis nueva el problema es q no todos los navegadores no tienen soporte*/
+width: 100%;
+height: 100%;
+/*coordenadas
+top: 0;
+right: 0;
+bottom: 0;
+left: 0; */
+display: flex;
+flex-direction: column;
+/* para alinear con display flex tanto vertical como horzontal con align-items: y con justify-content: */ 
+align-items: center;
+justify-content: center;
+}
+.contenido-hero h2, .contenido-hero p{
+    color: var(--blanco);
+}
+.ubicacion{
+    display: flex;
+    /*cuando no se cambia la direcion a column.. nos sirve para alinear verticalmente como por ejemplo*/
+    align-items: flex-end;
 }
