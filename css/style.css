@@ -1,38 +1,49 @@
-/**seudoselectores**/
+/**seudoselectores paleta de colores custom properties**/
 :root {
   --blanco: #ffffff;
   --negro: #212121;
   --primario: #ffc107;
   --secundario: #0097a7;
   --gris: #757575;
+  --grisClaro: #dfe9f3;
 }
 html {
   font-size: 62.5%;
-  /*fuente de letra crub*/
-  font-family: "Krub", sans-serif;
   /*usarlo siempre no hace que afecte el padding en la caja osea que se ponga mas grande si ya se ah definido un tamaño */
   box-sizing: border-box;
 }
 /* complemento de box-sizing: border-box para aplicarlo a todo */
-*,*:before,*:after{
-box-sizing: inherit;
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
 }
 
 body {
   font-size: 16px; /** 1rem = 10px **/
+  /*fuente de letra crub*/
+  font-family: "Krub", sans-serif;
+  /* fondo de color degradado de la pagina web completa empieza de abajo hacia arriba == to top,to right etc y se pone el color despues se pone 0% al 100% depende del porcentaje es el cambio del degradado de color */
+  background-image: linear-gradient(
+    to top,
+    var(--grisClaro) 0%,
+    var(--blanco) 100%
+  );
 }
 /*tanto el h1,h2,h3 se esta definiendo una regla para la tipografia en general*/
 h1 {
-    font-size: 3.8rem;/*3.8rem == 38px*/
+  font-size: 3.8rem; /*3.8rem == 38px*/
 }
-h2{
-    font-size: 2.8rem; /*2.8 == 28px*/
+h2 {
+  font-size: 2.8rem; /*2.8 == 28px*/
 }
-h3{
-    font-size: 1.8rem; /*1.8rem == 18px*/
+h3 {
+  font-size: 1.8rem; /*1.8rem == 18px*/
 }
 /*se va a utilizar ese heding para todos para ahorrar codigo y no ponerlos uno por uno si va hacer lo mismo*/
-h1,h2,h3 {
+h1,
+h2,
+h3 {
   text-align: center;
 }
 /**La unidad de medida rem hace que se adapte a diferentes tipos de tamaños de pantallas**/
@@ -66,8 +77,8 @@ h1,h2,h3 {
 
 /* todo lo que tenga que ver con texto se va encontrar con font o con text las propiedades ejemplo text-decoration o font-size etc */
 .navegacion-principal a {
-    display: block;
-    text-align: center;
+  display: block;
+  text-align: center;
   color: var(--blanco);
   text-decoration: none;
   font-weight: bold;
@@ -80,8 +91,26 @@ h1,h2,h3 {
   background-color: var(--primario);
   color: var(--negro);
 }
+.boton {
+  background-color: var(--secundario);
+  color: var(--blanco);
+  padding: 1rem 3rem;
+  margin-top: 1rem;
+  font-size: 2rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: bold;
+  border-radius: 0.5rem;
+  width: 90%;
+  text-align: center;
+}
+@media (min-width: 768px) {
+  .boton {
+    width: auto;
+  }
+}
 .contenedor {
-    /* toma 1200 pixeles como maximo si no toma el 100% para el ancho de las pantallas con max-width */
+  /* toma 1200 pixeles como maximo si no toma el 100% para el ancho de las pantallas con max-width */
   max-width: 120rem;
   /* margin-top: 0;  margen hacia arriba cero 
     margin-right: auto;  margen a la derecha auto para que el margin auto funcione el otro lado tambien debe estar auto para que se centre 
@@ -91,40 +120,56 @@ h1,h2,h3 {
   /* para no escribir tanto codigo por que este es lo mismo de arriba entonces se escribe margin y las demas propiedades automaticamente margin las coge como las manecillas del reloj */
   margin: 0 auto 0 auto;
 }
-.hero{
-    background-image: url(../img/hero.jpg);
-    background-repeat: no-repeat;
-    /* si la imagen no abarca el 100% de la pantalla coge una parte y la completa background-size: cover;*/
-    background-size: cover;
-    height: 41rem;
-    /* padding: 2rem; */
-    /*el padre siempre debe tener posicion relativa para que el hijo se pueda posicionar como absulubta*/
-    position: relative;
+.sombra {
+  box-shadow: -2px 4px 5px 1px rgba(107, 107, 107, 1);
+  background-color: var(--blanco);
+  padding: 2rem;
+  border-radius: 1rem;
 }
-.contenido-hero{
-    /*solo se le puede aplicar position: absolute; por que el padre tiene position: relative; si esto no se hace no se podria hacer nada de las posiciones como top, right, bottom, y left */
-position: absolute;
-/*ver la imagen con nivel de con una sombra con nivel de transparencia para hacerlo hay q usar un nivel del 0 hasta el 1 donde el uno es totalmente negro y el cero es totalmente transparente*/
-background-color: rgba(0, 0, 0, .7);/*sintaxis anterior*/
-background-color: rgba(0 0 0 /70%);/*sintaxis nueva el problema es q no todos los navegadores no tienen soporte*/
-width: 100%;
-height: 100%;
-/*coordenadas
+.hero {
+  background-image: url(../img/hero.jpg);
+  background-repeat: no-repeat;
+  /* si la imagen no abarca el 100% de la pantalla coge una parte y la completa background-size: cover;*/
+  background-size: cover;
+  height: 41rem;
+  /* padding: 2rem; */
+  /*el padre siempre debe tener posicion relativa para que el hijo se pueda posicionar como absulubta*/
+  position: relative;
+  margin-bottom: 2rem;
+}
+.contenido-hero {
+  /*solo se le puede aplicar position: absolute; por que el padre tiene position: relative; si esto no se hace no se podria hacer nada de las posiciones como top, right, bottom, y left */
+  position: absolute;
+  /*ver la imagen con nivel de con una sombra con nivel de transparencia para hacerlo hay q usar un nivel del 0 hasta el 1 donde el uno es totalmente negro y el cero es totalmente transparente*/
+  background-color: rgba(0, 0, 0, 0.7); /*sintaxis anterior*/
+  background-color: rgba(
+    0 0 0 /70%
+  ); /*sintaxis nueva el problema es q no todos los navegadores no tienen soporte*/
+  width: 100%;
+  height: 100%;
+  /*coordenadas
 top: 0;
 right: 0;
 bottom: 0;
 left: 0; */
-display: flex;
-flex-direction: column;
-/* para alinear con display flex tanto vertical como horzontal con align-items: y con justify-content: */ 
-align-items: center;
-justify-content: center;
+  display: flex;
+  flex-direction: column;
+  /* para alinear con display flex tanto vertical como horzontal con align-items: y con justify-content: */
+  align-items: center;
+  justify-content: center;
 }
-.contenido-hero h2, .contenido-hero p{
-    color: var(--blanco);
+.contenido-hero h2,
+.contenido-hero p {
+  color: var(--blanco);
 }
-.ubicacion{
-    display: flex;
-    /*cuando no se cambia la direcion a column.. nos sirve para alinear verticalmente como por ejemplo*/
-    align-items: flex-end;
+.contenido-hero .ubicacion {
+  display: flex;
+  /*cuando no se cambia la direcion a column.. nos sirve para alinear verticalmente como por ejemplo*/
+  align-items: flex-end;
+}
+
+/* servicios con grid */
+.servicios{
+  display: grid;
+  
 }
