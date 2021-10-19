@@ -8,6 +8,8 @@
 }
 html{
     font-size: 62.5%;
+    /*fuente de letra crub*/
+    font-family: 'Krub', sans-serif;
 }
 
 body{
@@ -31,3 +33,47 @@ h1.titulo span{
     font-size: 2rem;
     color: blue;
 } */
+.nav-bg{
+    background-color: var(--secundario);
+}
+    .navegacion-principal{
+    /* flexbox seria activandolo con display:flex activa siertas propiedades para acomodar el contenido */
+    display: flex;
+    /* si no esta activado flexbox = display:flex la propiedad justify-content: no se activara */
+    justify-content: space-between;
+}
+
+/* todo lo que tenga que ver con texto se va encontrar con font o con text las propiedades ejemplo text-decoration o font-size etc */
+.navegacion-principal a{
+    color: var(--blanco);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 2rem;
+    padding: 1rem; /* css piensa que si todas las direcciones van a ser iguales no hay necesidad de replicarlo, solo con escribirlo una ves ya css lo automatiza i gual pasa con el margin */
+}
+
+/*el hover se le puede dar propiedades a la fuente ya que es solo cuando se le pasa el cursor por encima poniendole el color al hover de la etiqueta a */
+.navegacion-principal a:hover{
+    background-color: var(--primario);
+    color: var(--negro);
+}
+.contenedor{
+    width: 120rem;
+    /* margin-top: 0;  margen hacia arriba cero 
+    margin-right: auto;  margen a la derecha auto para que el margin auto funcione el otro lado tambien debe estar auto para que se centre 
+    margin-bottom: 0;  margen hacia abajo cero 
+    margin-left: auto;   margen a la izquierda auto para que el margin auto funcione el otro lado tambien debe estar auto para que se centre */
+
+    /* para no escribir tanto codigo por que este es lo mismo de arriba entonces se escribe margin y las demas propiedades automaticamente margin las coge como las manecillas del reloj */
+    margin: 0 auto 0 auto;
+}
+@media (min-width: 480px){
+    h1{
+
+    }
+}
+@media (min-width: 768px){
+    h1{
+        
+    }
+}
