@@ -168,8 +168,63 @@ left: 0; */
   align-items: flex-end;
 }
 
-/* servicios con grid */
-.servicios{
-  display: grid;
-  
+/* a los 768px dividelo en tres columnas de resto se vera hacia abajo */
+@media (min-width: 768px) {
+  /* servicios con grid */
+  .servicios {
+    display: grid;
+    /* grid-template-columns: 30rem 30rem; */
+    grid-template-columns: repeat(
+      3,
+      1fr
+    ); /* 1 fraccion de cada columna por el 100% entre tres= 1fr repetido por 3 columnas*/
+    column-gap: 1rem;
+  }
+}
+
+.servicio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.servicio h3 {
+  color: var(--secundario);
+  font-weight: normal;
+}
+.servicio p {
+  line-height: 2; /*espaciado entre filas del parrafo hace que se lea mas facil el parrafo*/
+  text-align: center;
+}
+.servicio .iconos {
+  height: 15rem;
+  width: 15rem;
+  background-color: var(--primario);
+  border-radius: 50%; /* circulo exacto si es un cuadrado */
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center; /*permite alinear verticalmente con flexbox*/
+}
+
+/*formulario de contacto*/
+.formulario{
+background-color: var(--gris);
+width: min(60rem,100%);/*utiliza el valor mas pequeño*/
+margin: 0 auto;/*se utiliza siempre que tengamos un elemento como lo es un formulario y cuyo padre no es un displayflex*/
+padding: 2rem;
+border-radius: 1rem;
+}
+.formulario fieldset{
+    border: none;
+}
+.formulario legend{
+    color: var(--primario);
+    text-align: center;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 2rem;
+
+}
+.contenedor-campos{
+    
 }
