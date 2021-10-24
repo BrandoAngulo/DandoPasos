@@ -11,6 +11,14 @@ html {
   font-size: 62.5%;
   /*usarlo siempre no hace que afecte el padding en la caja osea que se ponga mas grande si ya se ah definido un tamaño */
   box-sizing: border-box;
+  /*para dar el scroll solo en las secciones*/
+  scroll-snap-type: y mandatory;
+}
+
+/*para que el snap se detenga en esa parte que es al momento de dar scroll*/
+.servicio, .navegacion-principal, .formulario{
+  scroll-snap-align: center;
+  scroll-snap-stop: always ;
 }
 /* complemento de box-sizing: border-box para aplicarlo a todo */
 *,
@@ -188,6 +196,7 @@ left: 0; */
   align-items: flex-end;
 }
 
+/*Servicios*/
 /* a los 768px dividelo en tres columnas de resto se vera hacia abajo */
 @media (min-width: 768px) {
   /* servicios con grid */
