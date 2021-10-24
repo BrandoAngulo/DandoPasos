@@ -16,7 +16,7 @@ html {
 }
 
 /*para que el snap se detenga en esa parte que es al momento de dar scroll*/
-.servicio, .navegacion-principal, .formulario{
+.servicio, .navegacion-principal, .formulario, .footer{
   scroll-snap-align: center;
   scroll-snap-stop: always ;
 }
